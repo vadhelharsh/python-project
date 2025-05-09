@@ -1,0 +1,144 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: auto;
+}
+
+#header_container {
+    background:rgb(125, 167, 220);
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    height: 85px;
+}
+
+.header_nav_bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    margin-right: 50px;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+}
+.line {
+    padding: 20px 0px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    border-right: 1px solid;
+}   
+.line:hover {
+    padding: 20px 0px;
+    text-align: center;
+    width: 100%;
+    background: rgb(209, 215, 217);
+    height: 100%;
+    border-right: 1px solid;
+}
+
+#search_container {}
+
+/* -------------------MAIN SECTION CSSS---------------------------------------- */
+#main_container {
+    height: 650px;
+    width: 100%;
+}
+.main_div {
+    display: flex;
+    justify-content: start;
+    height: 100%;
+    width: 100%;
+}
+.sidebar_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    height: 80%;
+    width: 16%;
+    background-color: rgb(120, 179, 211,0.2);
+}
+#content_container {
+    margin-top: 100px;
+    margin-left: 115px;
+    height: 60%;
+    width: 65%;
+    background-color: rgb(208, 229, 233);
+    padding: 20px;
+}
+#first_section {
+    margin-top: 100px;
+    margin-left: 115px;
+    height: 382px;
+    width: 988px;
+    background-color: rgb(208, 229, 233);
+    padding: 20px;
+}
+.hr_line {
+padding: 20px 0px;
+text-align: center;
+width: 100%;
+height: 8%;
+border-bottom: 1px solid;
+}
+.hr_line:hover {
+    padding: 20px 0px;
+    text-align: center;
+    width: 100%;
+    height: 8%;
+    border-bottom: 1px solid;
+    background-color: rgb(255, 255, 255);
+}
+.names {
+    display: flex;
+    margin-left: 10px;
+}
+.age {
+    margin: 0px 0px 0px 10px;
+}
+.gender {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 300px;
+    margin: 20px 0px 10px 0px;
+}
+.patient_id {
+    margin: 20px 0px 10px 10px;
+}
+.contact {
+    margin: 20px 0px 10px 10px;
+}
+#second_section {
+    display: none;
+    position: absolute;
+    left: 246px;
+    margin-top: 100px;
+    margin-left: 115px;
+    height: 52%;
+    width: 65%;
+    background-color: rgb(208, 229, 233);
+    padding: 20px;
+}
+#third_section {
+    display: none;
+    position: absolute;
+    left: 246px;
+    margin-top: 100px;
+    margin-left: 115px;
+    height: 52%;
+    width: 65%;
+    background-color: rgb(208, 229, 233);
+    padding: 20px;
+}
+
+/* FOOTER SECTION CSS */
+/* #footer_container {
+    background-color: rgb(226, 225, 225);
+    height: 200px;
+    width: 100%;
+} */

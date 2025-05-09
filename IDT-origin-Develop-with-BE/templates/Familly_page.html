@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title%}Show Pateint Detail{% endblock %}
+
+{% block inner_style %}
+    <style>
+        #content_container {
+            margin-top: 50px;
+            margin-left: 115px;
+            height: 60%;
+            width: 40%;
+            background-color: rgb(208, 229, 233);
+            padding: 20px 50px;
+            border-radius: 20px 0px;
+        }
+        .sidebar_container {
+            height: 520px;
+        }
+        h3 {
+            font-size: 22px;
+            font-weight: 200;
+            padding-top: 8px;
+        }
+    </style>
+{% endblock %}
+{% block main %}
+    <div id="content_container">
+        <h3>Pateint Name : {{pateint_data.firstname}} {{pateint_data.lastname}}</h3>
+        <h3>Age : {{pateint_data.age}}</h3>
+        <h3>Pateint ID : {{pateint_data.id}}</h3>
+        <h3>Gender : {{pateint_data.gender}}</h3>
+        <h3>Emergency Number : {{pateint_data.emergencyNumber}}</h3>
+        <h3>Date & Time : {{pateint_data.dateAndTime}}</h3>
+        <h3>Hospital Name : {{pateint_data.hospitalName}}</h3>
+        <h3>Ward Name/Number : {{pateint_data.wardName}}</h3>
+        <h3>Bed Number : {{pateint_data.bedNumber}}</h3>
+        <h3>Current Condition : {{pateint_data.currentCondition}}</h3>
+        <h3>Approx Funds Needed : {{pateint_data.fundRequired}}</h3>
+        <h3>Urgency : {{pateint_data.Urgency}}</h3>
+        <h3>Intial Diagnosis : {{pateint_data.intialDiagnosis}}</h3>
+        <h3>Hospital Navigation Link : </h3>
+        <Div style="width: 50px; height: 30px; background-color: rgb(255, 255, 255); border: 1px solid;margin: 10px; padding: 4px 4px 0px 8px;">
+            <a href="{{pateint_data.hospitalLink}}" target="_blank"> Link </a>
+        </Div>
+    </div>
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDT-2</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='idt.css')}}">
+</head>
+<body>
+    <header>
+        <div id="header_container">
+            <a href="">
+                <img src="{{url_for('static',filename='hospitallogo.png')}}" alt="our hospital logo" style="height: 75px; width: 75px;margin-top: 5px;">
+            </a>
+            <nav class="header_nav_bar">
+                <div class="line">
+                    <a href="/">Home</a>
+                </div>
+                <div class="line">
+                    <a href="#">Contact</a>
+                </div>
+                <div class="line">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="line">
+                    <a href="#">Services</a>
+                </div>
+            </nav>
+            <div class="hospital_names">
+                <select name="hospitals" id="hospital"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="Hospital">Hospitals</option>
+                    <option value="apollo">Apollo</option>
+                    <option value="sarkari">Sarkari</option>
+                    <option value="zydus">Zydus</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language" style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;"> 
+                    <option value="english">english</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="gujarati">Gujarati</option>
+                </select>
+            </div>
+           
+            <div id="search_container">
+                <input type="search" id="search" placeholder="Search..."
+                    style="width: 300px; height: 35px;border-radius: 10px;padding-left: 10px;">
+                <button id="search_button" style="width: 50px; height: 35px; border-radius: 10px;background-color: #b8d2e3;">search</button>
+            </div>
+        </div>
+    </header>
+    <main id="main_container">
+        <div class="main_div">
+            <div class="sidebar_container">
+                    <div class="hr_line">
+                        <img src="{{url_for('static',filename='3line.svg')}}" style="height: 35px; width: 35px;">
+                    </div>
+                    <div class="hr_line">
+                        <a href="/login">Patient Detail form</a>
+                    </div>
+                    <div class="hr_line">
+                        <a href="/family_login">Patient Info Access Portal </a>
+                    </div>
+                    <div class="hr_line">
+                        <a href="#">Admin Login</a>
+                    </div>
+                    <div class="hr_line">
+                        <a href="#">Dashboard</a>
+                    </div>
+            </div>
+            <div id="content_container">
+                
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html> -->

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='idt.css') }}">
+    {% block inner_style %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div id="header_container">
+            <a href="">
+                <img src="{{url_for('static', filename='hospitallogo.png')}}" alt="our hospital logo" style="height: 75px; width: 75px;margin-top: 5px;">
+            </a>
+            <nav class="header_nav_bar">
+                <div class="line">
+                    <img src="{{url_for('static', filename='home.svg')}}" alt="home_svg" style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="/">Home</a>
+                </div>
+                <div class="line">
+                    <img src="{{url_for('static', filename='contact.svg')}}" alt="home_svg"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="#">Contact</a>
+                </div>
+                <div class="line">
+                    <img src="{{url_for('static', filename='about_us.svg')}}" alt="home_svg"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="line">
+                    <img src="{{url_for('static', filename='service.svg')}}" alt="Services"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="#">Services</a>
+                </div>
+            </nav>
+            <div class="hospital_names">
+                <select name="hospitals" id="hospital"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="Hospital">Hospitals</option>
+                    <option value="apollo">Apollo</option>
+                    <option value="sarkari">Sarkari</option>
+                    <option value="zydus">Zydus</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="english">english</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="gujarati">Gujarati</option>
+                </select>
+            </div>
+            <!-- <h1 style="font-size: 30px;margin-top: 10px;margin-right: 20px;">Integrated Hospital Navigation and Patient Info Portal</h1> -->
+            <div id="search_container">
+                <input type="search" id="search" placeholder="Search..."
+                    style="width: 300px; height: 35px;border-radius: 10px;padding-left: 10px;">
+                <button id="search_button" style="width: 50px; height: 35px; border-radius: 10px;">search</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="main_div">
+            <div class="sidebar_container">
+                <div class="hr_line" id="3_lines">
+                    <img src="{{url_for('static', filename='3line.svg')}}" style="height: 25px; width: 25px;">
+                </div>
+                <div class="hr_line">
+                    <img src="{{url_for('static', filename='dashboard.svg')}}" alt="home_svg"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="#">Dashboard</a>
+                </div>
+                <div class="hr_line">
+                    <img src="{{url_for('static', filename='Add_patient.svg')}}" alt="home_svg"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="/login">Patient Detail form</a>
+                </div>
+                <div class="hr_line">
+                    <img src="{{url_for('static', filename='pateint.svg')}}" alt="patient_svg"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="/family_login">Patient Info Access Portal</a>
+                </div>
+                <div class="hr_line">
+                    <img src="{{url_for('static', filename='admin_login.png')}}" alt="Admin_login"
+                        style="height: 20px; width: 20px;margin-right:2px; ">
+                    <a href="#">Admin Login</a>
+                </div>
+            </div>
+            {% block main %}
+            {% endblock %}
+        </div>
+    </main>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

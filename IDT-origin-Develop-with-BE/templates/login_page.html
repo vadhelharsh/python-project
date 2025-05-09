@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+{% block inner_style %}
+    <style>
+        #content_container {
+            margin-top: 125px;
+            margin-left: 250px;
+            height: 235px;
+            width: 400px;
+            padding: 50px 100px;
+            border-radius: 15px 0px;
+        }
+        .sidebar_container {
+            height: 520px;
+        }
+        #login_button{
+            height: 32px;
+            width: 70px;
+            margin-left: 110px;
+            background-color: white;
+            border-radius: 10px ;
+        }
+        #login_button:hover {
+            height: 34px;
+            width: 70px;
+            margin-left: 110px;
+            background-color: rgb(195, 214, 224);
+            border-radius: 10px ;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div id="content_container">
+        <form action="/fill_details" method="POST">
+            <label for="username">UserName : </label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required
+                style="width: 200px; height: 35px;border-radius: 10px;padding-left: 15px;">
+            <br>
+            <br> 
+            <label for="password">Password : </label>
+            <input type="password" id="password" name="password" required
+                style="width: 200px; height: 35px;border-radius: 10px;padding-left: 15px;"><br><br>
+            <a href="" style="color: rgb(0, 0, 255,0.8); font-size: 15px;">Forgot password? </a><Br><Br>
+            <button type="submit" id="login_button">login</button>
+        </form>
+    </div>
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="static/idt.css">
+    <style>
+        #content_container {
+            height: 35%;
+            width: 26%;
+            margin: 125px 250px;
+            padding: 50px 100px;
+            border-radius: 10px 0;
+         }
+        #submit_button{
+            height: 32px;
+            width: 70px;
+            margin-left: 100px;
+            background-color: white;
+            border-radius: 10px ;
+        }
+        #submit_button:hover {
+            height: 34px;
+            width: 70px;
+            margin-left: 100px;
+            background-color: rgb(195, 214, 224);
+            border-radius: 10px ;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="header_container">
+            <a href="">
+                <img src="hospitallogo.png" alt="our hospital logo" style="height: 75px; width: 75px;margin-top: 5px;">
+            </a>
+            <nav class="header_nav_bar">
+                <div class="line">
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="line">
+                    <a href="#">Contact</a>
+                </div>
+                <div class="line">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="line">
+                    <a href="#">Services</a>
+                </div>
+            </nav>
+            <div class="hospital_names">
+                <select name="hospitals" id="hospital"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="Hospital">Hospitals</option>
+                    <option value="apollo">Apollo</option>
+                    <option value="sarkari">Sarkari</option>
+                    <option value="zydus">Zydus</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="english">english</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="gujarati">Gujarati</option>
+                </select>
+            </div>
+            <div id="search_container">
+                <input type="search" id="search" placeholder="Search..."
+                    style="width: 300px; height: 35px;border-radius: 10px;padding-left: 10px;">
+                <button id="search_button" style="width: 50px; height: 35px; border-radius: 10px;">search</button>
+            </div>
+        </div>
+    </header>
+    <main id="main_container">
+        <div class="main_div">
+            <div class="sidebar_container">
+                <div class="hr_line">
+                    <img src="3line.svg" style="height: 35px; width: 35px;">
+                </div>
+                <div class="hr_line">
+                    <a href="#">Dashboard</a>
+                </div>
+                <div class="hr_line">
+                    <a href="login_page.html">Patient Detail form</a>
+                </div>
+                <div class="hr_line">
+                    <a href="Familly_page.html">Patient Info Access Portal </a>
+                </div>
+                <div class="hr_line">
+                    <a href="#">Admin Login</a>
+                </div>
+            </div>
+            <div id="content_container">
+                <form action="">
+                    <label for="Username">UserName : </label>
+                    <input type="text" id="Username" name="Username" placeholder="Enter your username"
+                        style="width: 200px; height: 35px;border-radius: 10px;padding-left: 15px;"><br><br
+                    <label for="password"> Password : </label>
+                    <input type="password" id="password" name="password" 
+                        style="width: 200px; height: 35px;border-radius: 10px;padding-left: 15px;"><br><br>
+                    <a href="" style="color: rgb(0, 0, 255,0.8); font-size: 15px;">Forgot password? </a><Br><Br>
+                    <button type="submit" id="submit_button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+<script>
+    const next_page = document.getElementById("submit_button");
+    next_page.addEventListener("click", () => {
+        // because with this preventdefault form get submit and page reload not giving me navigation 
+        event.preventDefault();
+        console.log("clicked"); 
+        window.location.href = "pateint_detail_form.html";
+    })
+</script>
+</html> -->

@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+{% block title %}Pateint Detail Form{% endblock %}
+
+{% block inner_style %}
+    <style>
+         #content_container {
+            margin-top: 125px;
+            margin-left: 250px;
+            height: 235px;
+            width: 400px;
+            padding: 50px 100px;
+            border-radius: 15px 0px;
+        }
+        .sidebar_container {
+            height: 520px;
+        }
+        .section {
+            display: flex;
+            position: absolute;
+            top: 140px;
+            left: 362px;
+        }
+        #section_1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_1:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+        #section_2:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+        #section_3:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #login_button {
+            height: 32px;
+            width: 85px;
+            margin-left: 100px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #login_button:hover {
+            height: 34px;
+            width: 85px;
+            margin-left: 100px;
+            background-color: rgb(195, 214, 224);
+            border-radius: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <div id="section_1">Section 1</div>
+        <div id="section_2">Section 2</div>
+        <div id="section_3">Section 3</div>
+    </div>
+    <form action="/submit_patient" method="POST">
+        <div id="first_section">
+            <div class="names">
+                <label for="firstname" style="font-size: 20px;">FirstName: </label>
+                <input type="text" id="name" name="firstname"
+                    style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required
+                    placeholder="enter the firstname">
+                <br>
+                <label for="lastname" style="font-size: 20px;">LastName: </label>
+                <input type="text" id="lastname" name="lastname"
+                    style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required
+                    placeholder="enter the lastname">
+            </div>
+            <br>
+            <hr>
+            <div class="age">
+                <label for="age" style="font-size: 20px;">Age: </label>
+                <input type="number" id="age" name="age"
+                    style="height: 25px; width: 200px;margin: 20px 40px 10px 15px ;padding: 0px 10px;" required
+                    placeholder="enter the assumed age">
+                <br>
+            </div>
+            <br>
+            <hr>
+            <div class="gender">
+                <section>
+                    <label for="gender" style="font-size: 20px;">Gender: </label>
+                </section>
+                <section>
+                    <label for="male" style="font-size: 20px;">Male: </label>
+                    <input type="radio" name="gender" id="male" value="Male" style="height: 16px; width: 16px;">
+                </section>
+                <section>
+                    <label for="female" style="font-size: 20px;">Female: </label>
+                    <input type="radio" name="gender" id="female" value="Female" style="height: 16px; width: 16px;">
+                </section>
+            </div>
+            <br>
+            <hr>
+            <div class="patient_id">
+                <label for="hospital_link" style="font-size: 20px;">Hospital Link: </label>
+                <input type="text" id="hospital_link" name="hospital_link"
+                    style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required
+                    placeholder="give the link to your hospital!">
+            </div>
+            <br>
+            <hr>
+            <div class="contact">
+                <Label for="emergency_number" style="font-size: 20px;">Emergency Number: </Label>
+                <input type="number" id="emergency_number" name="emergency_number"
+                    style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required
+                    placeholder="enter the number ">
+            </div>
+        </div>
+        <div id="second_section">
+            <label for="date_n_time" style="font-size: 20px;">Date and Time : </label>
+            <input type="datetime-local" id="date_n_time" name="date_n_time"
+                style="height: 25px; width: 200px;margin: 0px 40px 20px 15px ;">
+            <br>
+            <hr>
+            <label for="hospital_name" style="font-size: 20px;">Hospital Name : </label>
+            <input type="text" id="hospital_name" name="hospital_name"
+                style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required
+                placeholder="enter the hospital name">
+            <br>
+            <hr>
+            <label for="ward_name" style="font-size: 20px;">Ward/Block Name : </label>
+            <input type="text" id="ward_name" name="ward_name"
+                style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required
+                placeholder="enter the ward name/number">
+            <br>
+            <hr>
+            <label for="bed_num" style="font-size: 20px;">Bed Number : </label>
+            <input type="number" id="bed_num" name="bed_number"
+                style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required
+                placeholder="enter the bed number">
+            <br>
+            <hr>
+            <label for="condition" style="font-size: 20px;">Current Condition : </label>
+            <select name="condition" id="condition" required
+                style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;margin: 20px 0px 0px 0px;">
+                <option value="critical">Critical</option>
+                <option value="stable">Stable</option>
+                <option value="serious">Serious</option>
+            </select>
+        </div>
+        <div id="third_section">
+            <label for="funds" style="font-size: 20px;">Estimated Funds Required : </label>
+            <input type="number" id="funds" name="funds"
+                style="height: 25px; width: 200px;margin: 0px 40px 20px 15px ;padding: 0px 10px;" required
+                placeholder="enter the estimated funds required">
+            <br>
+            <hr>
+            <label for="urgency" style="font-size: 20px;">Urgency Level : </label>
+            <select name="Urgency" id="urgency" required
+                style="height: 35px;width: 100px; font-size: 15px;border-radius: 15px;padding: 2PX;margin: 20px 0px 20px 0px;">
+                <option value="immediate">Immediate</option>
+                <option value="Within_24_hours">Within 24 hours</option>
+                <option value="normal">Normal</option>
+            </select>
+            <br>
+            <hr>
+            <div style="display: flex;">
+                <label for="initial_info" style="font-size: 20px;margin: 40px 0px 0px 0px;">Initial Diagnosis : </label>
+                <textarea id="initial_info" name="Initial_info"
+                    style="height: 75px; width: 300px; margin: 20px 40px 20px 15px; padding: 10px;padding: 0px 10px;"
+                    required "></textarea>
+            </div>
+            <br><br><br>
+            <button type=" submit" id="login_button">Submit Form</button>
+        </div>
+    </form>
+{% endblock %}
+{% block script %}
+    <script>
+        const section1 = document.getElementById("section_1");
+            section1.addEventListener("click", () => {
+                document.getElementById("first_section").style.display = "block";
+                document.getElementById("second_section").style.display = "none";
+                document.getElementById("third_section").style.display = "none";
+                section1.style.backgroundColor = "rgb(208, 229, 233)";
+                section2.style.backgroundColor = "rgb(125, 167, 220)";
+                section3.style.backgroundColor = "rgb(125, 167, 220)";
+            })
+
+        const section2 = document.getElementById("section_2");
+        section2.addEventListener("click", () => {
+            //    console.log("section 2 clicked");
+            document.getElementById("first_section").style.display = "none";
+            document.getElementById("second_section").style.display = "block";
+            section2.style.backgroundColor = "rgb(208, 229, 233)";
+            section3.style.backgroundColor = "rgb(125, 167, 220)";
+            section1.style.backgroundColor = "rgb(125, 167, 220)";
+        })
+        const section3 = document.getElementById("section_3");
+        section3.addEventListener("click", () => {
+            document.getElementById("first_section").style.display = "none";
+            document.getElementById("second_section").style.display = "none";
+            document.getElementById("third_section").style.display = "block";
+            section3.style.backgroundColor = "rgb(208, 229, 233)";
+            section2.style.backgroundColor = "rgb(125, 167, 220)";
+            section1.style.backgroundColor = "rgb(125, 167, 220)";
+        })
+
+        const submit = document.getElementById("login_button");
+        submit.addEventListener("click", (event) => {
+            console.log("checked");
+            const emergency_number = document.getElementById("emergency_number");
+            length = emergency_number.value.length;
+            if (length != 10) {
+                event.preventDefault()
+                alert("enter only 10 digits")
+            }
+        })
+    </script>
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pateint Detail Form</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='idt.css') }}">
+    <style>
+        .section {
+            display: flex;
+            position: absolute;
+            top: 140px;
+            left: 362px;
+        }
+        #section_1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_1:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+        #section_2:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #section_3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(125, 167, 220);
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+        #section_3:hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 150px;
+            background-color: rgb(255, 255, 255);
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+        #login_button {
+            height: 32px;
+            width: 85px;
+            margin-left: 100px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        #login_button:hover {
+            height: 34px;
+            width: 85px;
+            margin-left: 100px;
+            background-color: rgb(195, 214, 224);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header_container">
+            <a href="">
+                <img src="{{url_for('static', filename='hospitallogo.png')}}" alt="our hospital logo" style="height: 75px; width: 75px;margin-top: 5px;">
+            </a>
+            <nav class="header_nav_bar">
+                <div class="line">
+                    <a href="/">Home</a>
+                </div>
+                <div class="line">
+                    <a href="#">Contact</a>
+                </div>
+                <div class="line">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="line">
+                    <a href="#">Services</a>
+                </div>
+            </nav>
+            <div class="hospital_names">
+                <select name="hospitals" id="hospital"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="Hospital">Hospitals</option>
+                    <option value="apollo">Apollo</option>
+                    <option value="sarkari">Sarkari</option>
+                    <option value="zydus">Zydus</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="english">english</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="gujarati">Gujarati</option>
+                </select>
+            </div>
+            <div id="search_container">
+                <input type="search" id="search" placeholder="Search..."
+                    style="width: 300px; height: 35px;border-radius: 10px;padding-left: 10px;">
+                <button id="search_button" style="width: 50px; height: 35px; border-radius: 10px;">search</button>
+            </div>
+        </div>
+    </header>
+    <main id="main_container">
+        <div class="main_div">
+            <div class="sidebar_container">
+                <div class="hr_line">
+                    <img src="{{url_for('static', filename='3line.svg')}}" style="height: 35px; width: 35px;">
+                </div>
+                <div class="hr_line">
+                    <a href="#">Dashboard</a>
+                </div>
+                <div class="hr_line">
+                    <a href="/login">Patient Detail form</a>
+                </div>
+                <div class="hr_line">
+                    <a href="/family_login">Patient Info Access Portal </a>
+                </div>
+                <div class="hr_line">
+                    <a href="#">Admin Login</a>
+                </div>
+            </div>
+            <div class="section">
+                <div id="section_1">Section 1</div>
+                <div id="section_2">Section 2</div>
+                <div id="section_3">Section 3</div>
+            </div>
+            <form action="/submit_patient" method="POST">
+                <div id="first_section">
+                    <div class="names">
+                        <label for="firstname" style="font-size: 20px;">FirstName: </label>
+                        <input type="text" id="name" name="firstname" style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required placeholder="enter the firstname">
+                        <br>
+                        <label for="lastname" style="font-size: 20px;">LastName: </label>
+                        <input type="text" id="lastname" name="lastname" style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required placeholder="enter the lastname">
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="age">
+                        <label for="age" style="font-size: 20px;">Age: </label>
+                        <input type="number" id="age" name="age" style="height: 25px; width: 200px;margin: 20px 40px 10px 15px ;padding: 0px 10px;" required placeholder="enter the assumed age">
+                        <br>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="gender">
+                        <section>
+                            <label for="gender" style="font-size: 20px;">Gender: </label>
+                        </section>
+                        <section>
+                            <label for="male" style="font-size: 20px;">Male: </label>
+                            <input type="radio" name="gender" id="male" value="Male" style="height: 16px; width: 16px;">
+                        </section>
+                        <section>
+                            <label for="female" style="font-size: 20px;">Female: </label>
+                            <input type="radio" name="gender" id="female" value="Female" style="height: 16px; width: 16px;">
+                        </section>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="patient_id">
+                        <label for="patientId" style="font-size: 20px;">Patient Id: </label>
+                        <input type="text" id="patientId" name="patientId" style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required placeholder="just add hyphen">
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="contact">
+                        <Label for="emergency_number" style="font-size: 20px;">Emergency Number: </Label>
+                        <input type="number" id="emergency_number" name="emergency_number" style="height: 25px; width: 200px;margin: 0px 40px 0px 15px ;padding: 0px 10px;" required placeholder="enter the number ">
+                    </div>
+                </div>
+                <div id="second_section">
+                    <label for="date_n_time" style="font-size: 20px;">Date and Time : </label>
+                    <input type="datetime-local" id="date_n_time" name="date_n_time"
+                        style="height: 25px; width: 200px;margin: 0px 40px 20px 15px ;">
+                    <br>
+                    <hr>
+                    <label for="hospital_name" style="font-size: 20px;">Hospital Name : </label>
+                    <input type="text" id="hospital_name" name="hospital_name"
+                        style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required placeholder="enter the hospital name">
+                    <br>
+                    <hr>
+                    <label for="ward_name" style="font-size: 20px;">Ward/Block Name : </label>
+                    <input type="text" id="ward_name" name="ward_name" 
+                        style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required placeholder="enter the ward name/number">
+                    <br>
+                    <hr>
+                    <label for="bed_num" style="font-size: 20px;">Bed Number : </label>
+                    <input type="number" id="bed_num" name="bed_number"
+                        style="height: 25px; width: 200px;margin: 20px 40px 20px 15px ;padding: 0px 10px;" required placeholder="enter the bed number">
+                    <br>
+                    <hr>
+                    <label for="condition" style="font-size: 20px;">Current Condition : </label>
+                    <select name="condition" id="condition" required
+                        style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;margin: 20px 0px 0px 0px;">
+                        <option value="critical">Critical</option>
+                        <option value="stable">Stable</option>
+                        <option value="serious">Serious</option>
+                    </select>
+                </div>
+                <div id="third_section">
+                    <label for="funds" style="font-size: 20px;">Estimated Funds Required : </label>
+                    <input type="number" id="funds" name="funds" style="height: 25px; width: 200px;margin: 0px 40px 20px 15px ;padding: 0px 10px;" required placeholder="enter the estimated funds required">
+                    <br>
+                    <hr>
+                    <label for="urgency" style="font-size: 20px;">Urgency Level : </label>
+                    <select name="Urgency" id="urgency" required
+                        style="height: 35px;width: 100px; font-size: 15px;border-radius: 15px;padding: 2PX;margin: 20px 0px 20px 0px;">
+                        <option value="immediate">Immediate</option>
+                        <option value="Within_24_hours">Within 24 hours</option>
+                        <option value="normal">Normal</option>
+                    </select>
+                    <br>
+                    <hr>
+                    <div style="display: flex;">
+                        <label for="initial_info" style="font-size: 20px;margin: 40px 0px 0px 0px;">Initial Diagnosis : </label>
+                        <textarea id="initial_info" name="Initial_info"
+                            style="height: 75px; width: 300px; margin: 20px 40px 20px 15px; padding: 10px;padding: 0px 10px;" required "></textarea>
+                    </div>
+                    <br><br><br>
+                    <button type="submit" id="login_button">Submit Form</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+<script>
+    const section1 = document.getElementById("section_1");
+    section1.addEventListener("click", () => {
+        document.getElementById("first_section").style.display = "block";
+        document.getElementById("second_section").style.display = "none";
+        document.getElementById("third_section").style.display = "none";
+        section1.style.backgroundColor = "rgb(208, 229, 233)";
+        section2.style.backgroundColor = "rgb(125, 167, 220)";
+        section3.style.backgroundColor = "rgb(125, 167, 220)";
+    })
+   
+    const section2 = document.getElementById("section_2");
+    section2.addEventListener("click", () => {
+        //    console.log("section 2 clicked");
+           document.getElementById("first_section").style.display = "none";
+           document.getElementById("second_section").style.display = "block";
+           section2.style.backgroundColor = "rgb(208, 229, 233)";
+           section3.style.backgroundColor = "rgb(125, 167, 220)";
+           section1.style.backgroundColor = "rgb(125, 167, 220)";
+    })
+    const section3 = document.getElementById("section_3");
+    section3.addEventListener("click", () => {
+        document.getElementById("first_section").style.display ="none";
+        document.getElementById("second_section").style.display = "none";
+        document.getElementById("third_section").style.display = "block";
+        section3.style.backgroundColor = "rgb(208, 229, 233)";
+        section2.style.backgroundColor = "rgb(125, 167, 220)";
+        section1.style.backgroundColor = "rgb(125, 167, 220)";
+    })
+
+    const submit = document.getElementById("login_button");
+    submit.addEventListener("click", (event) => {
+        console.log("checked");
+        const emergency_number = document.getElementById("emergency_number");
+        length = emergency_number.value.length;
+        if (length != 10) {
+            event.preventDefault()
+            alert("enter only 10 digits")
+        }
+    })
+</script>
+</html> -->

@@ -1,0 +1,202 @@
+{% extends "base.html" %} 
+{% block title %}Home Page{% endblock %}
+
+{% block inner_style %}
+    <style>
+        #content_container {
+            margin-top: 50px;
+            margin-left: 115px;
+            height: 520px;
+        }
+        .sidebar_container {
+            height: 520px;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+<div id="content_container">
+        <h1 style="text-align: center;">Title: "Integrated Hospital Navigation and Patient Info Portal"</h1>
+        <div style="margin: 10px;display: flex;justify-content: space-between;">
+            <img src="{{url_for('static', filename='hospitallogo.png')}}" alt="our project logo" style="height: 300px; width: 300px;">
+            <p style="height: 20ppx; width: 600px;"><b>Description:</b>
+                This project aims to assist families during emergency hospital visits by combining hospital navigation with a
+                patient
+                information portal. In critical situations, patients are often brought in unconscious or without proper
+                documentation,
+                making it difficult to contact family members or keep them informed.
+                <br>
+                <b>The system includes the following key features:</b>
+                <br>
+                Hospital Navigation:
+                A map-based tool helps family members find the correct hospital, especially when multiple hospitals have similar
+                names
+                nearby. This avoids confusion and saves precious time.
+                <br>
+                Emergency Contact Access:
+                Hospital staff can view emergency contact details from sources like Aadhaar cards, college IDs, or mobile lock
+                screen
+                emergency info. This allows them to quickly inform the patient’s family about the situation.
+                <br>
+                Patient Information Portal:
+                A web-based system where family members can access real-time updates about the patient’s condition, ward number,
+                block,
+                required funds, and other important details.
+                <br>
+                Staff Entry Panel:
+                A private form used by a designated hospital staff member to upload patient information into the system. This
+                includes
+                patient ID, current condition, contact number (used as a unique ID), treatment details, and more.
+                <br>
+                Phone Number-Based Access:
+                Family members can enter the phone number used by hospital staff to contact them, and the portal will display
+                the
+                patient’s info. This makes it easy to access updates without needing a login or ID card.
+                <br>
+                (Optional) Direct Link via SMS/WhatsApp:
+                To make things even smoother, staff can send a direct link to the family via SMS or WhatsApp. Clicking the link
+                takes
+                them directly to the patient’s info page.
+            </p>
+        </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="static/idt.css ">
+    <style>
+        #content_container {
+            margin-top: 50px;
+            margin-left: 115px;
+            height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="header_container">
+            <a href="">
+                <img src="hospitallogo.png" alt="our hospital logo" style="height: 75px; width: 75px;margin-top: 5px;">
+            </a>
+            <nav class="header_nav_bar">
+                <div class="line">
+                    <a href="/">Home</a>
+                </div>
+                <div class="line">
+                    <a href="#">Contact</a>
+                </div>
+                <div class="line">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="line">
+                    <a href="#">Services</a>
+                </div>
+            </nav>
+            <div class="hospital_names">
+                <select name="hospitals" id="hospital"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="Hospital">Hospitals</option>
+                    <option value="apollo">Apollo</option>
+                    <option value="sarkari">Sarkari</option>
+                    <option value="zydus">Zydus</option>
+                </select>
+            </div>
+            <div>
+                <select name="language" id="language"
+                    style="height: 35px;width: 90px; font-size: 15px;border-radius: 15px;padding: 2PX;">
+                    <option value="english">english</option>
+                    <option value="hindi">Hindi</option>
+                    <option value="gujarati">Gujarati</option>
+                </select>
+            </div>
+            <div id="search_container">
+                <input type="search" id="search" placeholder="Search..."
+                    style="width: 300px; height: 35px;border-radius: 10px;padding-left: 10px;">
+                <button id="search_button" style="width: 50px; height: 35px; border-radius: 10px;">search</button>
+            </div>
+        </div>
+    </header>
+    <main id="main_container">
+        <div class="main_div">
+            <div class="sidebar_container">
+                <div class="hr_line" id="3_lines">
+                    <img src="3line.svg" style="height: 25px; width: 25px;">
+                </div>
+                <div class="hr_line">
+                    <a href="#">Dashboard</a>
+                </div>
+                <div class="hr_line">
+                    <a href="/login">Patient Detail form</a>
+                </div>
+                <div class="hr_line">
+                    <a href="Familly_page.html">Patient Info Access Portal</a>
+                </div>
+                <div class="hr_line">
+                    <a href="#">Admin Login</a>
+                </div>
+            </div>
+            <div id="content_container">
+                <h1 style="text-align: center;">Title: "Integrated Hospital Navigation and Patient Info Portal"</h1>
+                <div style="margin: 10px;display: flex;justify-content: space-between;">
+                    <img src="hospitallogo.png" alt="our project logo" style="height: 300px; width: 300px;">
+                    <p style="height: 20ppx; width: 600px;"><b>Description:</b>
+                    This project aims to assist families during emergency hospital visits by combining hospital navigation with a patient
+                    information portal. In critical situations, patients are often brought in unconscious or without proper documentation,
+                    making it difficult to contact family members or keep them informed.
+                    <br>
+                    <b>The system includes the following key features:</b>
+                    <br>
+                    Hospital Navigation:
+                    A map-based tool helps family members find the correct hospital, especially when multiple hospitals have similar names
+                    nearby. This avoids confusion and saves precious time.
+                    <br>
+                    Emergency Contact Access:
+                    Hospital staff can view emergency contact details from sources like Aadhaar cards, college IDs, or mobile lock screen
+                    emergency info. This allows them to quickly inform the patient’s family about the situation.
+                    <br>
+                    Patient Information Portal:
+                    A web-based system where family members can access real-time updates about the patient’s condition, ward number, block,
+                    required funds, and other important details.
+                    <br>
+                    Staff Entry Panel:
+                    A private form used by a designated hospital staff member to upload patient information into the system. This includes
+                    patient ID, current condition, contact number (used as a unique ID), treatment details, and more.
+                    <br>
+                    Phone Number-Based Access:
+                    Family members can enter the phone number used by hospital staff to contact them, and the portal will display the
+                    patient’s info. This makes it easy to access updates without needing a login or ID card.
+                    <br>
+                    (Optional) Direct Link via SMS/WhatsApp:
+                    To make things even smoother, staff can send a direct link to the family via SMS or WhatsApp. Clicking the link takes
+                    them directly to the patient’s info page.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+<script>
+    const line_svg = document.getElementById("3_lines");
+    line_svg.addEventListener("click" , () => {
+         
+    })
+</script>
+</html> -->
