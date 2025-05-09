@@ -1,0 +1,182 @@
+import tkinter as tk
+from tkinter import messagebox
+import random
+
+class TicTacToe:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Tic Tac Toe")
+        self.root.resizable(False, False)
+        self.root.configure(bg="#f0f0f0")
+        self.current_player = "X"
+        self.board = [""] * 9
+        self.game_active = True
+        self.vs_computer = False
+        self.create_menu_frame()
+        self.create_game_frame()
+        self.create_status_frame()
+        self.show_menu()
+
+    def create_menu_frame(self):
+        self.menu_frame = tk.Frame(self.root, bg="#f0f0f0", padx=20, pady=20)
+        
+        title_label = tk.Label(self.menu_frame, text="Tic Tac Toe", font=("Arial", 24, "bold"), bg="#f0f0f0")
+        title_label.pack(pady=20)
+        
+        pvp_button = tk.Button(self.menu_frame, text="Player vs Player", font=("Arial", 14),
+                              command=self.start_pvp, width=15, bg="#4CAF50", fg="white",
+                              activebackground="#45a049", relief=tk.RAISED, bd=3)
+        pvp_button.pack(pady=10)
+        
+        pvc_button = tk.Button(self.menu_frame, text="Player vs Computer", font=("Arial", 14),
+                              command=self.start_pvc, width=15, bg="#2196F3", fg="white",
+                              activebackground="#0b7dda", relief=tk.RAISED, bd=3)
+        pvc_button.pack(pady=10)
+
+    def create_game_frame(self):
+        self.game_frame = tk.Frame(self.root, bg="#f0f0f0", padx=20, pady=20)
+
+        self.buttons = []
+        for i in range(3):
+            for j in range(3):
+                index = i * 3 + j
+                button = tk.Button(self.game_frame, text="", font=("Arial", 24, "bold"), 
+                                  width=3, height=1, command=lambda idx=index: self.make_move(idx))
+                button.grid(row=i, column=j, padx=5, pady=5)
+                self.buttons.append(button)
+
+    def create_status_frame(self):
+        self.status_frame = tk.Frame(self.root, bg="#f0f0f0", padx=20, pady=10)
+    
+        self.player_label = tk.Label(self.status_frame, text="Player X's turn", 
+                                    font=("Arial", 14), bg="#f0f0f0")
+        self.player_label.pack(pady=5)
+        
+        reset_button = tk.Button(self.status_frame, text="Reset Game", font=("Arial", 12),
+                               command=self.reset_game, bg="#ff9800", fg="white",
+                               activebackground="#e68a00")
+        reset_button.pack(pady=5)
+        
+        menu_button = tk.Button(self.status_frame, text="Main Menu", font=("Arial", 12),
+                              command=self.show_menu, bg="#9e9e9e", fg="white",
+                              activebackground="#7d7d7d")
+        menu_button.pack(pady=5)
+
+    def show_menu(self):
+        self.game_frame.pack_forget()
+        self.status_frame.pack_forget()
+        self.menu_frame.pack()
+
+    def show_game(self):
+        self.menu_frame.pack_forget()
+        self.game_frame.pack()
+        self.status_frame.pack()
+
+    def start_pvp(self):
+        self.vs_computer = False
+        self.reset_game()
+        self.show_game()
+
+    def start_pvc(self):
+        self.vs_computer = True
+        self.reset_game()
+        self.show_game()
+
+    def reset_game(self):
+        self.board = [""] * 9
+        self.current_player = "X"
+        self.game_active = True
+        
+        for button in self.buttons:
+            button.config(text="", bg="SystemButtonFace", state=tk.NORMAL)
+        
+        self.player_label.config(text="Player X's turn")
+
+    def make_move(self, index):
+        if not self.game_active or self.board[index] != "":
+            return
+        
+        self.buttons[index].config(text=self.current_player)
+        if self.current_player == "X":
+            self.buttons[index].config(fg="#ff5722")
+        else:
+            self.buttons[index].config(fg="#2196F3")
+            
+        self.board[index] = self.current_player
+    
+        if self.check_winner():
+            self.highlight_winning_line()
+            self.game_active = False
+            messagebox.showinfo("Game Over", f"Player {self.current_player} wins!")
+            return
+        
+        if "" not in self.board:
+            self.game_active = False
+            messagebox.showinfo("Game Over", "It's a draw!")
+            return
+        
+        self.current_player = "O" if self.current_player == "X" else "X"
+        self.player_label.config(text=f"Player {self.current_player}'s turn")
+        
+        if self.vs_computer and self.current_player == "O" and self.game_active:
+            self.root.after(500, self.computer_move)
+
+    def computer_move(self):
+        for i in range(9):
+            if self.board[i] == "":
+                self.board[i] = "O"
+                if self.check_winner(check_only=True):
+                    self.make_move(i)
+                    return
+                self.board[i] = ""
+        
+        for i in range(9):
+            if self.board[i] == "":
+                self.board[i] = "X"
+                if self.check_winner(check_only=True):
+                    self.board[i] = ""
+                    self.make_move(i)
+                    return
+                self.board[i] = ""
+        
+        if self.board[4] == "":
+            self.make_move(4)
+            return
+            
+        corners = [0, 2, 6, 8]
+        random.shuffle(corners)
+        for i in corners:
+            if self.board[i] == "":
+                self.make_move(i)
+                return
+                
+        for i in range(9):
+            if self.board[i] == "":
+                self.make_move(i)
+                return
+
+    def check_winner(self, check_only=False):
+        win_conditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  
+            [0, 4, 8], [2, 4, 6]              
+        ]
+        
+        for condition in win_conditions:
+            a, b, c = condition
+            if (self.board[a] != "" and 
+                self.board[a] == self.board[b] == self.board[c]):
+                if not check_only:
+                    self.winning_line = condition
+                return True
+                
+        return False
+
+    def highlight_winning_line(self):
+        for i in self.winning_line:
+            self.buttons[i].config(bg="#4CAF50")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    game = TicTacToe(root)
+    root.mainloop()
