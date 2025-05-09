@@ -16,7 +16,7 @@ def login():
 def fill_details():
     username = request.form.get('username').strip()
     password = request.form.get('password').strip()
-    if username == 'ashish' and password == '7201099243':
+    if username == 'harsh' and password == '7043660314':
         return render_template('pateint_detail_form.html', username = username , password = password)
     else: 
         # message = "invalid login credentials"
